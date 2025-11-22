@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>project shop</title>
+  <link rel="stylesheet" href="css.css" type="text/css" media="all" />
+  <style>
+    ::root {
+  /* 🎯 Brand (هوية الموقع) */
+  --brand-main: #1B00FF;        /* اللون الأساسي للعلامة (Bold Royal Blue) */
+  --brand-dark: #0A0099;        /* نسخة داكنة منه */
+  --brand-light: #E0E7FF;       /* نسخة فاتحة - خلفيات خفيفة */
+
+  /* ✨ Accent (التمييز والانتباه) */
+  --accent-yellow: #FFC107;     /* عروض، تنبيهات إيجابية */
+  --accent-orange: #FF5722;     /* CTA - دعوات للإجراء (اشترِ الآن) */
+  --accent-green: #00C853;      /* نجاح - تأكيد */
+  --accent-red: #FF1744;        /* تحذير - خطأ - حذف */
+
+  /* ⚫ Grayscale (تدرجات الرمادي للاحترافية) */
+  --gray-100: #F8F9FA;          /* خلفية فاتحة جدًا */
+  --gray-200: #E9ECEF;
+  --gray-300: #DEE2E6;
+  --gray-400: #CED4DA;
+  --gray-600: #6C757D;          /* نص ثانوي */
+  --gray-900: #212529;          /* نص رئيسي */
+
+  /* ✏️ Text */
+  --text-main: var(--gray-900);
+  --text-muted: var(--gray-600);
+  --text-inverse: #FFFFFF;
+
+  /* 🌐 Backgrounds */
+  --bg-main: var(--gray-100);
+  --bg-card: var(--brand-light);
+  --bg-footer: var(--gray-300);
+
+  /* 🧵 Borders & Radius */
+  --border-color: var(--gray-300);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 1rem;
+  --radius-pill: 999px;
+
+  /* ⚙️ Transitions */
+  --transition-fast: 0.2s ease-in-out;
+  --transition-smooth: 0.4s ease;
+}
+    body{
+      padding:0px;
+      margin:0px;
+    }
+    .header{
+      width:100vw;
+      background-color:#009CFF29;
+      min-height:14vh;
+      border-bottom:1px solid black ;
+    }
+    .header .logo{
+      font-size:3em;
+      font-weight:999;
+      font-family:fantasy;
+      padding-left:20px;
+      color:#0A0099;
+    }
+    
+    .header .links{
+      display:flex;
+      justify-content:space-between ;
+      align-items:center ;
+      width:600px;
+      font-size:1.4rem;
+    }
+.header .links a{
+  color:#1B00FF;
+  text-decoration:none;
+  transition:700ms ease ;
+}
+.header .links a:hover{
+  color:black;
+  text-decoration:underline ;
+}
+.login{
+  margin:10px;
+}
+  .header .login a{
+      padding:10px 30px;
+      background-color:#1B00FF;
+      text-decoration:none;
+      font-size:1.3em;
+      border-radius:1000px;
+      text-align:center ;
+      color:white;
+    }
+    .con{
+      min-height:14vh;
+    }
+    .header > .con{
+      display:flex;
+      justify-content:space-between ;
+      align-items:center ;
+      flex-flow:row nowrap;
+    }
+   .nav{
+      width:100vw;
+      height:86vh;
+      display:grid ;
+      grid-template-columns:1fr 1fr ;
+      grid-template-rows:1fr 1fr 1fr 1fr;
+      background-color:#7EDEFF38;
+    }
+    .p{
+      grid-column:1/2;
+      grid-row:1/4;
+    }
+    .f{
+      grid-column:2/3;
+      grid-row:1/4;
+    }
+    .s{
+      grid-column:1/3;
+      grid-row:4/5;
+    }
+    .fc{
+      display:flex;
+      justify-content:center ;
+      align-items:center ;
+    }
+    div[class="p"]{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    flex-flow:column wrap;
+    }
+    .p h1{
+      font-family:fantasy ;
+      font-weight:999;
+      font-size:5em;
+      color:#1B00FF;
+    }
+    .p h1 span{
+      color:#1B00FF;
+    }
+    .p p{
+      opacity:0.5;
+      text-align:center ;
+      padding-left:10px;
+    }
+    .f img{
+      width:100%;
+      height:calc(62.5vh - 40px);
+      overflow:both;
+      border:0.9px solid black ;
+      border-radius:20px;
+      background-color:transparent;
+    }
+    nav[class="f"]{
+      padding:40px;
+    }
+    nav[class="s"]{
+      display:flex;
+      justify-content:center ;
+      align-items:center;
+    }
+    .s select{
+      outline:1px solid var(--gray-300);
+      color:var(--gray-900);
+      font-size:1.5em;
+      text-align:center ;
+      width:50vw;
+      height:7vh;
+    }
+    .main{
+      background-color:#7EDEFF38;
+      width:100vw;
+      height:auto;
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      grid-template-rows:repeat(10,auto);
+    }
+    .main-border{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px ;
+    }
+    .product{
+      border-radius:30px;
+      border:2px solid black;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      flex-flow:row;
+      height:50vh;
+      background-color:white;
+    }
+    .product .prf,img{
+      width:25vw;
+      border-top-left-radius:28px;
+      border-bottom-left-radius:28px;
+     height:50vh;
+    }
+    .r{
+      display:flex;
+      justify-content:flex-start;
+      align-items:start;
+      flex-flow:column nowrap;
+      height:50vh ;
+      padding:15px;
+    }
+    .product a{
+      background-color:#0003FF;
+      color:white;
+      text-decoration:none;
+      padding:10px;
+      border-radius:10px;
+    }
+   .product p:nth-last-of-type(2){
+     font-size:0.9em;
+     opacity:0.6;
+   }
+   .product p:nth-of-type(2){
+     font-size:2em;
+     font-weight:450;
+   }
+   action{
+     width:100vw;
+     height:200vh;
+     display:grid;
+     grid-template-columns:auto;
+     grid-template-rows:1fr auto 1fr;
+     position:relative ;
+     background-color:#7EDEFF38;
+   }
+   action img{
+     border:1px solid black ;
+     border-radius:10px;
+     margin-left:230px ;
+     margin-top:100px;
+     transform:rotate(-10deg);
+   }
+   .pare{
+     border-radius:10px;
+     width:50vw;
+     height:70vh;
+     position:absolute ;
+     top:300px;
+     left:550px;
+     padding:20px;
+     background:#CED4DA;
+     transform:rotate(10deg);
+   }
+   .pare p{
+     color:var(--gray-600);
+     opacity:0.8;
+     font-size:;
+     }
+     .pragraph{
+       margin-left:20px;
+       margin-top:100px;
+     }
+     div-foto{
+       margin-top:900px;
+     }
+     .frfr{
+       margin-top:300px;
+       margin-bottom:100px;
+     }
+     .nav{
+       border-bottom:1px solid ;
+     }
+     .fk{
+       
+       height:auto;
+      background-color:#7EDEFF38;
+      padding-left:40px;
+      word-break:break-word;
+     }
+     .fk img{
+       border-radius:20px;
+       box-shadow:2px 2px 10px black ;
+     }
+     .dfk{
+       width:92%;
+     }
+    .dfk h1{
+      padding:20px;
+    }
+    .dfk h2{
+      padding:10px;
+    }
+    .dfk p{
+      border:0.01px solid black;
+      background-color:#9AA8AD2E;
+      padding:10px;
+      border-radius:4px;
+    }
+    .dfk{
+      padding:10px 0px 100px 10px;
+    }
+    .search{
+      width:100%;
+      height:20vh;
+      background-color:#7EDEFF38;
+      }
+    .search input{
+      width:50px;
+      height:50px;
+      background-color:#0006FF;
+      box-shadow:2px 2px 10px #0006FF;
+      border:none;
+      outline:none;
+      border-radius:2000px;
+      transition:600ms ease ;
+      margin-bottom:100px;
+    }
+    .search input:hover{
+      padding:10px;
+      width:30%;
+      height:10vh;
+      background-color:transparent;
+      color:inherit;
+      border-radius:100px;
+    }
+    .fk img{
+      margin:50px;
+    }
+    button[type="submit"]{
+      width:40%;
+      height:10vh;
+      background-color:#002FFF;
+      color:white ;
+      font-size:2rem;
+      font-family:fantasy ;
+      padding:2px 10px ;
+      border-radius:30px;
+      margin-top:20px;
+      border:0.1px solid black ;
+    }
+   .footer{
+      width:100%;
+      height:130vh;
+      display:grid;
+      grid-template-columns:1fr  1fr ;
+      grid-template-rows:290px auto auto auto ;
+    }
+    .kalam{
+      grid-column:2 / 3;
+      grid-row:2 / 3;
+      display:flex;
+      justify-content:center ;
+      align-items:center ;
+      background-color:#1100A0;
+      width:100%;
+    }
+    .kalam p{
+      color:white;
+      width:70%;
+    }
+    .malomat{
+      grid-column:1 / 2;
+      grid-row:2 / 3;
+    
+    }
+   .malomat section{
+     background-image:linear-gradient(to bottom right,#000A5B 10%,#001CFF 20%,#00FCFF ,white);
+   }
+    .wave,.rabits,.hokuk{
+      grid-column:1/3;
+    }
+    .malomat{
+      background-color:#1100A0;
+    }
+    .rabits{
+      width:100%;
+      height:100%;
+      background-color:#1100A0;
+      color:white ;
+      text-align:center ;
+      text-decoration:none;
+      border-bottom:10px solid white;
+    }
+    .rabits a{
+      color:white ;
+      text-align:center ;
+      text-decoration:none;
+      margin:40px 40px;
+    }
+    .hokuk{
+      text-align:center;
+      background-color:#00074F;
+      padding:20px;
+      color:white ;
+    }
+    .footer{
+      background-color:#7EDEFF38;
+    }
+    </style>
+</head>
+
+<body>
+  
+<header class="header">
+  <div class="con">
+    <div class="logo">Boolo shop</div>
+    <div class="links">
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Services</a>
+      <a href="">Products</a>
+    </div>
+    <div class="login"><a href="/CSS ZEROWEB/P Login.html" title="Login or signin" >Login / signin</a></div>
+  </div>
+  </header>
+  
+  <nav class="nav">
+    <div class="nav">
+      <nav class="p"><div class="p"><h1><span>Boolo</span> shop</h1>
+      <p>Boolo Shop is an online store that offers a variety of stylish and high-quality products, designed to meet the needs of modern customers. From fashion to accessories, Boolo Shop combines great design with affordable prices.</p>
+      <button class="button" type="submit">Login </button></div></nav>
+      <nav class="f"><div class="f"><img src="/pc Maus Tastatur/file_000000007dc86230a5f3e2c1153fdc9d.png" alt=""></div></nav>
+      <nav class="s"><div class="s">
+      <select name="" id="">
+        <option selected> <a href="">pc</a></option>
+        <option> <a href="">Mause</a></option>
+        <option > <a href="">Tastatur</a></option>
+      </select>
+      </div></nav>
+    </div>
+  </nav>
+  <action class="action-foto">
+<div class="frfr">
+    <div class="div-foto"><img sizes="" srcset="" src="/pc Maus Tastatur/file_000000007dc86230a5f3e2c1153fdc9d.png" alt=""><nav class="pare">
+      <p><h1>Welcome to Boolo Shop – Your Trusted Online Tech Store</h1>
+
+At Boolo Shop, we specialize in high-quality computer keyboards and mice designed for comfort, performance, and durability. Whether you're a gamer, a student, or a professional, we have the perfect tools to upgrade your workspace.
+<br>
+🖱️ Precision Mice – Smooth control, ergonomic design, and fast response.<br>
+⌨️ Reliable Keyboards – From mechanical to wireless, we offer a wide range to suit every need.
+<br>
+Shopping with Boolo is easy, fast, anergonomic. <br>
+🛒 Explore our collection today and experience the difference in quality and service!
+<h2>Boolo Shop delivers top-quality tech products right to your home — fast and </h2> <br>
+Our mission is to make sure you get the best gear without delays.<br>
+We focus on reliable performance, modern design, and customer satisfaction.<br>
+With Boolo, you don’t have to wait long to upgrade your setup.<br>
+Quality you can trust. Speed you can count on.</p></nav> </div>
+</div>
+    <div class="pragraph"><p><h1> Boolo Shop – More Than Just Shopping</h1>
+<br>
+Boolo Shop is not only a place to buy – it's a full tech marketplace.<br>
+Users can chat directly with our support team and contact the company for help or business inquiries.<br>
+You can also register or browse anonymously, depending on your preference.<br>
+browse
+Want to sell your own products?<br>
+With Boolo, you can create an account and start selling your desktop computers, keyboards, mice, and more – easily and securely.<br>
+Whether you're a buyer or a seller, Boolo Shop is built to support your needs.</p></div>
+  </action>
+<div class="fk">
+  <img sizes="" srcset="" src="/pc Maus Tastatur/file_00000000b59061f7bd3cee8eecf6dc71.png" alt="">
+  <div class="dfk">
+  <h1>Premium Computers – Power, Performance, and Perfection in Every Click</h1>
+
+<p>Step into the world of unmatched performance and sophisticated design with our latest line of premium computers. Engineered for professionals, creatives, gamers, and everyday users alike, these machines represent the pinnacle of modern computing — where innovation meets reliability.</p>
+
+<p>Whether you're multitasking across demanding applications, editing ultra-high-definition videos, designing 3D environments, or managing massive datasets, our computers are built to handle it all without breaking a sweat. They combine the latest in hardware advancements with intuitive software optimization to deliver a seamless, lag-free experience that you can rely on — every single day.</p>
+
+<h2>⚡ Performance That Leads the Industry</h2>
+<p>At the heart of our computers lie the most powerful processors available today, including the latest Intel Core i9 and AMD Ryzen 9 chips. These multi-core CPUs are designed to deliver blistering speed and efficiency, allowing users to switch between applications instantly and run complex tasks without delay. Combined with high-frequency RAM options up to 64GB, you’ll enjoy faster load times, smooth multitasking, and fluid transitions even during heavy workloads.</p>
+
+<h2>🖥️ Stunning Graphics and Display Quality</h2>
+<p>Whether you're a gamer seeking realism or a designer striving for color precision, our systems come equipped with high-performance NVIDIA RTX and AMD Radeon GPUs. Expect stunning visuals, real-time ray tracing, and powerful rendering capabilities that bring your content to life.</p>
+<p>Pair this with 4K Ultra-HD displays, IPS technology, and 100% sRGB color accuracy, and you have a visual experience that's not only beautiful but also incredibly accurate and immersive.</p>
+
+<h2>💾 Storage That Adapts to You</h2>
+<p>Say goodbye to slow load times and limited space. Our computers feature lightning-fast NVMe SSDs, with options from 512GB to 4TB, ensuring you can store thousands of files, photos, games, and videos with zero compromise on speed. For those who need it, hybrid storage options (SSD + HDD) are also available — giving you the best of both speed and capacity.</p>
+
+<h2>🔒 Advanced Security and Connectivity</h2>
+<p>Built with your digital safety in mind, our systems include advanced biometric login options such as fingerprint sensors and facial recognition via IR cameras. Meanwhile, enterprise-grade TPM 2.0 security chips protect your data at the hardware level.</p>
+<p>Connectivity is seamless, with multiple Thunderbolt 4, USB-C, HDMI, and Ethernet ports available. You’ll also benefit from the latest Wi-Fi 6E and Bluetooth 5.3 technologies, ensuring the fastest wireless connections possible — whether for work, video conferencing, or streaming 4K content.</p>
+
+<h2>🔇 Silent Cooling and Intelligent Design</h2>
+<p>Our premium builds come with ultra-quiet cooling systems, including liquid-cooling options and dynamic fan control that keeps your machine cool under pressure without the noise. Housed in sleek, minimalist chassis made of aluminum or carbon-fiber composites, the aesthetics match the power inside.</p>
+<p>With a backlit keyboard, spacious trackpad, and ergonomic layout, comfort and productivity go hand in hand — whether you're at your desk or on the go.</p>
+
+<h2>🔋 Unmatched Battery Life and Portability (Laptops)</h2>
+<p>For those who prefer portability, our high-end laptops offer long-lasting battery life — up to 18 hours on a single charge — along with fast-charging USB-C adapters that get you to 50% in under 30 minutes. At just under 1.2kg in weight, you won’t even feel the difference in your bag, but you will in your workflow.</p>
+
+<h2>🌎 Sustainability and Support</h2>
+<p>Our commitment to sustainability means these computers are ENERGY STAR® certified and built using recycled aluminum and eco-friendly packaging. And when you need help, our award-winning support team is available 24/7 to assist with anything — from setup to troubleshooting.</p>
+
+<h2>In Summary</h2>
+<p>Our computers are more than just machines — they are powerful tools built to elevate your creativity, productivity, and entertainment. Whether you're creating the next big thing, solving problems, or just enjoying media in its highest form, these systems deliver uncompromising performance, security, and elegance.</p>
+
+<p><strong>Experience the next level of computing. Choose power without limits. Choose quality without question. Choose your future.</strong></p>
+</div>
+</div>
+
+
+<div class="search fc">
+<input type="search" name="" id="" value="" />
+</div>
+
+
+  <div class="main">
+    
+    
+    <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_102242_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1>PowerBook X200</h1>
+            <p>PowerBook X200 Thin, powerful, and perfect for daily tasks and media.</p>
+            <p>$735.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_102433_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1>GameMax Pro 7</h1>
+            <p>A fast gaming PC with high-end graphics for smooth gameplay.</p>
+            <p>$875.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_102450_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1>ProTower G9</h1>
+            <p>A desktop beast built for professionals and creators.</p>
+            <p>$620.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+        <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_102415_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1>VisionBook Touch</h1>
+            <p>Touchscreen laptop with a sleek design and great battery life.</p>
+            <p>$1380.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+</div>
+  
+  
+  
+<div class="fk">
+  <img srcset="" src="/pc Maus Tastatur/file_000000002e9061f793cf4a48b9a60657.png" alt="">
+  <div class="dfk">
+   <h1>The Concept of the Computer – Humanity’s Greatest Digital Invention</h1>
+
+<p>The computer is one of the most revolutionary inventions in human history. It is not merely a machine, but a powerful concept that has reshaped every aspect of our lives — from how we communicate and learn to how we work, create, and imagine the future. At its core, the computer is a programmable device designed to perform tasks and solve problems at speeds and accuracies far beyond human capabilities.</p>
+
+<p>From the earliest mechanical calculators to today’s quantum systems, the evolution of computers reflects a deep human desire to process information, automate complex tasks, and extend the boundaries of what is possible. Computers have become indispensable in every field — science, medicine, education, engineering, entertainment, and beyond.</p>
+
+<p>What sets the computer apart is its ability to follow instructions (called programs), store vast amounts of data, and adapt to virtually any purpose. Whether it’s editing a movie, analyzing genetic data, building virtual worlds, managing global financial systems, or even driving autonomous vehicles — the computer makes it all possible.</p>
+
+<p>Moreover, computers represent the fusion of hardware and software — physical components working in harmony with abstract code and logic. This duality is what gives computers their flexibility and creative potential. A single computer can function as a typewriter, a calculator, a canvas, a research tool, a communication device, and so much more.</p>
+
+<p>But the concept of the computer goes beyond the physical device. It embodies the principles of logic, algorithms, and digital thinking. It teaches us how to break problems into smaller parts, solve them efficiently, and think systematically. In this way, the computer is not just a machine — it is a way of thinking and a mindset of problem-solving that defines the digital age.</p>
+
+<p>As technology advances, the idea of the computer continues to evolve. We now talk about artificial intelligence, machine learning, neural networks, and cloud computing — all extensions of the fundamental concept of computing power being applied in new, intelligent ways. The future of the computer is not limited to desks or laptops; it lives in smart homes, wearable devices, vehicles, and embedded systems all around us.</p>
+
+<p>In short, the computer is not only a tool — it is a symbol of modern innovation and human ingenuity. Understanding the concept of the computer means understanding the future itself. It is the engine behind digital transformation and the foundation of our connected world.</p>
+
+<p><strong>The computer is more than a device. It is the heart of the digital revolution — and it all begins with an idea.</strong></p> 
+  </div>
+</div>
+  
+<div class="search fc">
+<input type="search" name="" id="" value="" />
+</div>
+  
+    <div class="main">
+    
+    
+    <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_103433_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1>Logitech MX Master 3S</h1>
+            <p>A premium wireless mouse designed for productivity and comfort, and multitaskers.</p>
+            <p>$78.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_103448_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1> DeathAdder V3 Pro</h1>
+            <p>A lightweight,Ideal for competitive gamers who demand speed and accuracy.</p>
+            <p>$120.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_103549_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1>Apple Magic Mouse 2</h1>
+            <p>A sleek, minimalist mouse designed for Mac users, gesture-based navigation.</p>
+            <p>$67.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+        <div class="main-border">
+      <div class="product">
+        <div class="prf"><img sizes="" srcset="" src="/pc Maus Tastatur/Screenshot_20250614_103614_Chrome.jpg" alt=""></div>
+        <div class="r">
+          <div class="script">
+            <h1>Logitech G Pro X Superlight</h1>
+            <p>One of the lightest wireless gaming mice on the market, ambidextrous design.</p>
+            <p>$39.99</p>
+            <a href="">Buy Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  <div></div>
+  <div></div>
+</div>
+  
+  
+  <div class="footer">
+    <div class="wave">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+  <path fill="#1100A0" fill-opacity="1" d="M0,96L80,112C160,128,320,160,480,149.3C640,139,800,85,960,69.3C1120,53,1280,75,1360,85.3L1440,96L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path>
+</svg>
+    </div>
+    <div class="malomat">
+        
+        
+        <section style="background-color: #f9f9f9; padding: 30px; border-radius: 12px; max-width: 600px; margin: auto; font-family: Arial, sans-serif; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+  <h2 style="text-align: center; color: #333;">📬 Contact & Website Information</h2>
+  <ul style="list-style: none; padding: 0; font-size: 16px; color: #444;">
+    <li>🛍️ <strong>Store Name:</strong> Boolo Shop</li>
+    <li>🌐 <strong>Website:</strong> <a href="https://www.booloshop.com" style="color: #007BFF;">www.booloshop.com</a></li>
+    <li>📞 <strong>Phone:</strong> +213 6 12 34 56 78</li>
+    <li>✉️ <strong>Email:</strong> <a href="mailto:contact@booloshop.com" style="color: #007BFF;">contact@booloshop.com</a></li>
+    <li>📍 <strong>Address:</strong> Victory Street, 2nd Floor, Algiers, Algeria</li>
+    <li>⏰ <strong>Opening Hours:</strong><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;🗓️ Saturday – Thursday: 9:00 AM – 6:00 PM<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;🕌 Friday: Closed
+    </li>
+  </ul>
+</section>
+    </div>
+    
+    <div class="kalam">
+      <p>
+    © 2025 Boolo Shop. All rights reserved.
+About Us | Contact | Privacy Policy | Terms of Servicep</p>
+    </div>
+    <div class="rabits">
+      <a href="">Home</a>
+      <a href="">Abaute</a>
+      <a href="">service</a>
+      <a href="">product</a>
+      <a href="">contect</a>
+      <a href="/CSS ZEROWEB/P Login.html">Login</a>
+      <a href="">Register</a>
+    </div>
+    <div class="hokuk">
+      <p>© 2025 Boolo Shop. All rights reserved. Visit us at: www.booloshop.com</p>
+    </div>
+  </div>
+  
+  
+  
+  
+
+</body>
+
+</html>
